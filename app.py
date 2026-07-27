@@ -9,7 +9,6 @@ import os
 # ---------------------------------------------------------------------------
 st.set_page_config(
     page_title="Employee Attrition Predictor",
-    page_icon="📊",
     layout="wide"
 )
 
@@ -62,7 +61,7 @@ cat_options = get_categorical_options()
 # ---------------------------------------------------------------------------
 # Header
 # ---------------------------------------------------------------------------
-st.title("📊 Employee Attrition Prediction")
+st.title("Employee Attrition Prediction")
 st.markdown(
     "Enter an employee's details below to predict the likelihood they will "
     "leave the company. This app uses a machine learning pipeline trained on "
@@ -75,7 +74,7 @@ st.divider()
 # ---------------------------------------------------------------------------
 with st.form("attrition_form"):
 
-    st.subheader("👤 Personal Details")
+    st.subheader("Personal Details")
     c1, c2, c3 = st.columns(3)
     with c1:
         age = st.number_input("Age", min_value=18, max_value=65, value=40)
@@ -84,7 +83,7 @@ with st.form("attrition_form"):
     with c3:
         marital_status = st.selectbox("Marital Status", cat_options["Marital_Status"])
 
-    st.subheader("💼 Job Details")
+    st.subheader("Job Details")
     c1, c2, c3 = st.columns(3)
     with c1:
         department = st.selectbox("Department", cat_options["Department"])
@@ -109,7 +108,7 @@ with st.form("attrition_form"):
     with c3:
         overtime = st.selectbox("Overtime", cat_options["Overtime"])
 
-    st.subheader("💰 Compensation & Workload")
+    st.subheader("Compensation & Workload")
     c1, c2, c3 = st.columns(3)
     with c1:
         monthly_income = st.number_input("Monthly Income", min_value=0, max_value=50000, value=11400, step=100)
@@ -126,7 +125,7 @@ with st.form("attrition_form"):
     with c3:
         absenteeism = st.number_input("Absenteeism (days)", min_value=0, max_value=60, value=9)
 
-    st.subheader("⭐ Satisfaction & Performance (scale 1 = low – 4/5 = high)")
+    st.subheader("Satisfaction & Performance (scale 1 = low – 4/5 = high)")
     c1, c2, c3 = st.columns(3)
     with c1:
         work_life_balance = st.slider("Work-Life Balance", 1, 4, 2)
@@ -143,7 +142,7 @@ with st.form("attrition_form"):
     with c3:
         job_involvement = st.slider("Job Involvement", 1, 4, 2)
 
-    submitted = st.form_submit_button("🔮 Predict Attrition Risk", use_container_width=True)
+    submitted = st.form_submit_button("Predict Attrition Risk", use_container_width=True)
 
 # ---------------------------------------------------------------------------
 # Prediction
@@ -186,9 +185,9 @@ if submitted:
 
     with res_col1:
         if prediction == 1:
-            st.error("### ⚠️ Likely to Leave")
+            st.error("### Likely to Leave")
         else:
-            st.success("### ✅ Likely to Stay")
+            st.success("### Likely to Stay")
         st.metric("Attrition Probability", f"{probability * 100:.1f}%")
 
     with res_col2:
